@@ -1,0 +1,12 @@
+--CREATE TABLE
+USE mutants
+
+CREATE TABLE IF NOT EXISTS `Dnas` (
+  `id_dna` int NOT NULL AUTO_INCREMENT,
+  `dna` varchar(255) NOT NULL UNIQUE,
+  `es_mutante` bit DEFAULT 0,
+  PRIMARY KEY (`id_dna`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+--ROLLBACK
+DROP TABLE IF EXISTS `Dnas`
