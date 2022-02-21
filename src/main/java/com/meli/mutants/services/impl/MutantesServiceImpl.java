@@ -94,19 +94,23 @@ public class MutantesServiceImpl implements IMutantesService {
 	 */
 	private void verificaMatrizHorizontal(String[] dna) throws Exception {
 
-		for (int i = 0; i < dna.length; i++) {
-			if (validaLetra(dna, i, 0)) {
-				consecutivo = 0;
-				for (int j = 0; j < dna.length - 1; j++) {
-					if (validaLetra(dna, i, j + 1)) {
-						leePosicion(dna, i, j, i, j + 1);
-					} else {
-						throw new Exception(EXISTEN_CARACTERES_INVALIDO);
+		if (dna.length > 0) {
+			for (int i = 0; i < dna.length; i++) {
+				if (validaLetra(dna, i, 0)) {
+					consecutivo = 0;
+					for (int j = 0; j < dna.length - 1; j++) {
+						if (validaLetra(dna, i, j + 1)) {
+							leePosicion(dna, i, j, i, j + 1);
+						} else {
+							throw new Exception(EXISTEN_CARACTERES_INVALIDO);
+						}
 					}
+				} else {
+					throw new Exception(EXISTEN_CARACTERES_INVALIDO);
 				}
-			} else {
-				throw new Exception(EXISTEN_CARACTERES_INVALIDO);
 			}
+		} else {
+			throw new Exception(EXISTEN_CARACTERES_INVALIDO);
 		}
 	}
 
