@@ -37,7 +37,7 @@ public class MutanteController {
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			response =  HttpStatus.INTERNAL_SERVER_ERROR.toString();
+			response =  HttpStatus.BAD_REQUEST.toString();
 		}
 		logger.info("::::Finaliza método esMutante::::");
 		return response;

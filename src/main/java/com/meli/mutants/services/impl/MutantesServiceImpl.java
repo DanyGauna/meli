@@ -50,8 +50,6 @@ public class MutantesServiceImpl implements IMutantesService {
 		return stats;
 	}
 	
-	//Ejemplo MUTANTE = ATGCGA,CAGTGC,TTATGT,AGAAGG,CCCCTA,TCACTG
-	//Ejemplo NO MUTANTE = ATGCGA,CAGTGC,TTATTT,AGACGG,GCGTCA,TCACTG
 	/**
 	 * Metodo para verificar si un humano es mutante segun su adn
 	 * @author Daniel Gauna
@@ -65,13 +63,12 @@ public class MutantesServiceImpl implements IMutantesService {
 		adn.setDna(dna);
 		//verifico si es mutante o no en base al dna
 		adn.setEsMutante(verificaMutacion(dna));
-		try {
-			//Intenta guardar el registro 
-			//Si ya existe el dna tira excepcion de Duplicate entry '¬í' for key 'dnas.dna'
+		Dna adnAux = dnaRepository.findByDna(dna);
+		//Si no existe el dna lo guarda y sino devuelve el dna encontrado
+		if (adnAux == null) {
 			save(adn);
-		} catch (Exception e) {
-			//Si ya existe ese dna lo busca y devuelve el valor es_mutante
-			adn = dnaRepository.findByDna(dna);
+		} else {
+			return adnAux.getEsMutante();
 		}
 		return adn.getEsMutante();
 	}
