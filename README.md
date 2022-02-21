@@ -15,6 +15,8 @@ URL: https://sublime-sunspot-341922.rj.r.appspot.com/mutantes/mutant
 
 Método: POST
 
+Header: Content-Type value application/json
+
 Ejemplo de formato de cada tipo de dna:
 
 MUTANTE: 
